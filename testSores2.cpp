@@ -34,31 +34,17 @@ void displayAry(student* ary, int size, ofstream& fout); //takes in a double-poi
 double calcAverage(student* ary, int size);
 void fillArray(student* ary, int size);
 
+void getSize(int& s);
+
 //begin main********************************************************************
 int main()
 {
 	ofstream fout;   //creating a filestream object for output, called fout.
 	fout.open("results.txt"); //output will go to results.txt
-
 	int size;
 	student* aryPtr; //creating a pointer (to students!) called aryPtr.
 
-
-	clearScreen();
-
-
-	cout << "How many test-scores would you like to enter? :";
-
-	cin >> size;
-
-	if(size < 0) //size input-validation. make sure user is aware.
-	{
-		size = 0;
-
-		cout << endl << endl << "an invalid size was entered, so the size has been set to 0 instead." << endl;
-		cout << "Program Closing..." << endl;
-	}
-
+	getSize(size); //ask the user for the size of the array. 
 
 	aryPtr = new student[size]; //create a new array of [size] many students.
 	// do note thsat aryPtr is now pointing at this ary!	
@@ -78,6 +64,26 @@ fout.close();
 }
 
 //function Definitions ***************************************************
+
+void getSize(int& s)
+{
+	clearScreen();
+	cout << "How many test-scores would you like to enter? :";
+
+	cin >> s;
+
+	if(s < 0) //size input-validation. make sure user is aware.
+	{
+		s = 0;
+
+		cout << endl << endl << "an invalid size was entered, so the size has been set to 0 instead." << endl;
+		cout << "Program Closing..." << endl;
+	}
+
+}
+
+
+
 void fillArray(student* ary, int size)
 {
 
